@@ -14,19 +14,17 @@ import org.springframework.messaging.MessageChannel;
 
 import javax.jms.ConnectionFactory;
 
+/**
+ * Entry class for all instruments coming to Price Service
+ */
 @Configuration
 public class GatewayFlow {
 
-    @Bean
-    @Autowired
-    public IntegrationFlow vendorSpecificInboundJmsFlow(@Qualifier(value = "queueConnectionFactory")ConnectionFactory connectionFactory){
-        return IntegrationFlows
-                .from(Jms.messageDrivenChannelAdapter(connectionFactory)
-                        .destination("vendor1-queue"))
-                .channel(ChannelConfig.PRICE_CHANNEL)
-                .get();
-    }
-
+    /**
+     * Flow to handle predefined JSON price format on JMS
+     * @param connectionFactory QueueConnectionFactory
+     * @return IntegrationFlow
+     */
     @Bean
     @Autowired
     public IntegrationFlow inboundJsonJmsFlow(@Qualifier(value = "queueConnectionFactory")ConnectionFactory connectionFactory) {
@@ -37,6 +35,28 @@ public class GatewayFlow {
                 .channel(ChannelConfig.PRICE_CHANNEL)
                 .get();
     }
+
+    /**
+     * Flow to handle vendor specific messages on queue
+     * @param connectionFactory  QueueConnectionFactory
+     * @return IntegrationFlow
+     */
+    @Bean
+    @Autowired
+    public IntegrationFlow vendorSpecificInboundJmsFlow(@Qualifier(value = "queueConnectionFactory")ConnectionFactory connectionFactory){
+        return IntegrationFlows
+                .from(Jms.messageDrivenChannelAdapter(connectionFactory)
+                        .destination("vendor1-queue"))
+                .channel(ChannelConfig.PRICE_CHANNEL)
+                .get();
+    }
+
+
+    /**
+     * Flow to handle any other inbound like HTTP
+     * @param inboundChannel MessageChannel
+     * @return Integration Flow
+     */
 
     @Bean
     @Autowired

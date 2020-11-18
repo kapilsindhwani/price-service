@@ -10,6 +10,8 @@ You need to have the below installed in your pc to use.
 * maven
 * jdk 8+
 
+#### How to obtain and use the source code
+Checkout the project from git 
 ####Usage
 1. The design diagram on how the price service works is described in the file /documents/Design_Document.JPG
 2. At the start up the service will create a schema from schema-h2.sql. This will act as object store for prices
@@ -20,6 +22,18 @@ You need to have the below installed in your pc to use.
          "currency": "USD",     
          "vendorId": 1234
      }
-4. To view the API published by the service please visit - http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
-   
-       
+4. Following API's are published by the price service 
+    * Publish Price
+    * Search Price by Instrument
+    * Search Price by Vendor
+    * Browse Downstream Queue
+
+For full usage of API's please visit - http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+
+5. Sample json to publish price via swagger is:
+                                               {
+                                                   "instrumentId": "A1123",
+                                                   "price": 29,
+                                                   "currency": "USD",
+                                                   "vendorId": 1234
+                                               }

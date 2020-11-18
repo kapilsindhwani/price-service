@@ -14,9 +14,19 @@ import org.springframework.messaging.MessageChannel;
 
 import javax.jms.ConnectionFactory;
 
+/**
+ * Send price to downstream
+ */
 @Configuration
 public class DownstreamFlow {
 
+    /**
+     * This flow will publish the messages to various downstream systems.The payload received will be Price and it can be transformed to various formats depending upon
+     * the type of format supported by downstream systems
+     * @param downstreamChannel Inbound channel for distributing the Price to downstream
+     * @param jmsTemplate Jmstemplate
+     * @return Integration Flow
+     */
     @Bean
     @Autowired
     public IntegrationFlow sendToDownstream(@Qualifier(ChannelConfig.DOWNSTREAM_CHANNEL) MessageChannel downstreamChannel, @Qualifier(value = "jmsQueueTemplate") JmsTemplate jmsTemplate){
