@@ -37,3 +37,10 @@ For full usage of API's please visit - http://localhost:8080/swagger-ui/index.ht
                                                    "currency": "USD",
                                                    "vendorId": 1234
                                                }
+#### Open issues
+Due to time constraint the following activities are not complete.
+1. Few test cases are missing
+2. DEAD LETTER QUEUE for replaying the message is missing.
+3. File Endpoint is missing                                               
+                                               
+                                               
