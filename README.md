@@ -11,7 +11,7 @@ You need to have the below installed in your pc to use.
 * jdk 8+
 
 #### How to obtain and use the source code
-Checkout the project from git 
+Checkout the project from git at https://github.com/kapilsindhwani/price-service.git
 #### Usage
 1. The design diagram on how the price service works is described in the file /documents/Design_Document.JPG
 2. At the start up the service will create a schema from schema-h2.sql. This will act as object store for prices
