@@ -1,10 +1,10 @@
-#Price Service
+# Price Service
 
-####Purpose:
+#### Purpose:
 Price Service will receive prices against an instrument from various vendors. It will then pass the prices to downstream systems.
 The service will also provide access to view the prices for various vendors and for a given instrument.
 
-####Prerequisites
+#### Prerequisites
 You need to have the below installed in your pc to use.
 * git
 * maven
@@ -12,7 +12,7 @@ You need to have the below installed in your pc to use.
 
 #### How to obtain and use the source code
 Checkout the project from git 
-####Usage
+#### Usage
 1. The design diagram on how the price service works is described in the file /documents/Design_Document.JPG
 2. At the start up the service will create a schema from schema-h2.sql. This will act as object store for prices
 3. Price Service currently accepts the price details in json format however the system is loosely coupled and it can accept any format like xml, csv by plugging in new transformer and without the need to change the core logic. A new transformed needs to be written for any new format. A valid json example is shown below e.g. 
